@@ -17,7 +17,7 @@ export const CounterApp = () => {
       <hr />
 
       <button 
-        className="btn btn-primary"
+        className = "btn btn-primary"
         onClick = { () => {
           setState({
             ...state,
