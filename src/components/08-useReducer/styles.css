@@ -10,7 +10,7 @@ p {
 .list-group-item {
   align-items: center;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .complete {
