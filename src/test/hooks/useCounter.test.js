@@ -42,7 +42,7 @@ describe('Pruebas en useCounter', () => {
   
   test('debe de resetear el valor del counter al valor inicial', () => {
     const {result} =renderHook(() => useCounter(100));
-    const {increment, decrement, reset} = result.current;
+    const {decrement, reset} = result.current;
     act(() => {
       decrement();
       reset();
