@@ -17,16 +17,27 @@ export const useFetch = (url) => {
     // fetch(url)
     //   .then(resp => resp.json())
     //   .then(data => {
-    //     setState({
-    //       loading: false,
-    //       error: null,
-    //       data
-    //     })  
+    //     if(isMounted.current){
+    //       setState({
+    //         loading: false,
+    //         error: null,
+    //         data
+    //       })
+    //     }  
+    //   })
+    //   .catch(() => {
+    //     if(isMounted.current){
+    //       setState({
+    //         loading: false,
+    //         error: 'No se pudo cargar la info',
+    //         data: null
+    //       })
+    //     }
     //   });
     const getData = async () => {
-      const response = await fetch(url);
-      const json = await response.json();
-      setTimeout(() => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
         if(isMounted.current){
           setState({
             loading: false,
@@ -36,7 +47,15 @@ export const useFetch = (url) => {
         } else {
           console.log('No se llamo');
         }
-      }, 4000);
+      } catch (e) {
+        if(isMounted.current){
+          setState({
+          loading: false,
+          error: 'No se pudo cargar la info',
+          data: null
+          })
+        }
+      }
     };
 
     getData();
