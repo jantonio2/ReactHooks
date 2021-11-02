@@ -13,6 +13,7 @@ export const useCounter = (initialState = 10) => {
   }
   
   const decrement = (factor = 1) => {
+    // setCounter(counter => counter - factor); Para que en la prueba se pueda hacer varias la operacion decrmentar
     setCounter(counter - factor);
   }
 
